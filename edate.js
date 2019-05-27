@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"edate_atlas_", frames: [[1282,894,288,288],[0,898,288,288],[1160,1184,288,288],[1572,894,288,288],[870,898,288,288],[290,898,288,288],[580,898,288,288],[0,0,1280,896],[1282,719,675,173],[1282,0,690,717]]}
+		{name:"edate_atlas_", frames: [[1282,894,288,288],[1160,1184,288,288],[1572,894,288,288],[0,898,288,288],[870,898,288,288],[290,898,288,288],[580,898,288,288],[0,0,1280,896],[1282,719,675,173],[1282,0,690,717]]}
 ];
 
 
@@ -131,6 +131,14 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// Logo_and_text
+	this.text = new cjs.Text("at some point if/when you want and have some time to kill and want company :)", "12px 'Stencil'", "#003366");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 16;
+	this.text.lineWidth = 379;
+	this.text.parent = this;
+	this.text.setTransform(610.5,610.7);
+	this.text.shadow = new cjs.Shadow("rgba(0,204,0,1)",3,3,4);
+
 	this.sd = new cjs.Text("Eugene", "72px 'Times New Roman'");
 	this.sd.name = "sd";
 	this.sd.lineHeight = 82;
@@ -138,24 +146,24 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	this.sd.setTransform(513.9,489.85);
 	this.sd.shadow = new cjs.Shadow("rgba(51,0,255,1)",0,0,4);
 
-	this.text = new cjs.Text("TO AN e-DATE by", "46px 'Stencil'", "#003366");
-	this.text.lineHeight = 57;
-	this.text.lineWidth = 379;
-	this.text.parent = this;
-	this.text.setTransform(429,431.3);
-	this.text.shadow = new cjs.Shadow("rgba(0,204,0,1)",3,3,4);
-
-	this.text_1 = new cjs.Text("You are e-invited", "46px 'Stencil'", "#003366");
+	this.text_1 = new cjs.Text("TO AN e-DATE by", "46px 'Stencil'", "#003366");
 	this.text_1.lineHeight = 57;
+	this.text_1.lineWidth = 379;
 	this.text_1.parent = this;
-	this.text_1.setTransform(413.6,362.75);
+	this.text_1.setTransform(429,431.3);
 	this.text_1.shadow = new cjs.Shadow("rgba(0,204,0,1)",3,3,4);
 
-	this.text_2 = new cjs.Text("hey fellow fragger ", "46px 'Stencil'", "#003366");
+	this.text_2 = new cjs.Text("You are e-invited", "46px 'Stencil'", "#003366");
 	this.text_2.lineHeight = 57;
 	this.text_2.parent = this;
-	this.text_2.setTransform(352.05,220.5);
+	this.text_2.setTransform(413.6,362.75);
 	this.text_2.shadow = new cjs.Shadow("rgba(0,204,0,1)",3,3,4);
+
+	this.text_3 = new cjs.Text("hey fellow fragger ", "46px 'Stencil'", "#003366");
+	this.text_3.lineHeight = 57;
+	this.text_3.parent = this;
+	this.text_3.setTransform(352.05,220.5);
+	this.text_3.shadow = new cjs.Shadow("rgba(0,204,0,1)",3,3,4);
 
 	this.sd_1 = new cjs.Text("Beck", "72px 'Times New Roman'");
 	this.sd_1.name = "sd_1";
@@ -168,7 +176,7 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	this.instance.parent = this;
 	this.instance.setTransform(293,18);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.sd_1},{t:this.text_2},{t:this.text_1},{t:this.text},{t:this.sd}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.sd_1},{t:this.text_3},{t:this.text_2},{t:this.text_1},{t:this.sd},{t:this.text}]}).wait(1));
 
 }).prototype = getMCSymbolPrototype(lib.Scene_1_Logo_and_text, null, null);
 
@@ -278,7 +286,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,288,288);
 	this.Logo_and_text = new lib.Scene_1_Logo_and_text();
 	this.Logo_and_text.name = "Logo_and_text";
 	this.Logo_and_text.parent = this;
-	this.Logo_and_text.setTransform(630.5,294.8,1,1,0,0,0,630.5,294.8);
+	this.Logo_and_text.setTransform(630.5,356.5,1,1,0,0,0,630.5,356.5);
 	this.Logo_and_text.depth = 0;
 	this.Logo_and_text.isAttachedToCamera = 0
 	this.Logo_and_text.isAttachedToMask = 0
@@ -317,7 +325,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,288,288);
 	this.timeline.addTween(cjs.Tween.get(this.BG).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(641,359,677,537);
+p.nominalBounds = new cjs.Rectangle(641,356,677,540);
 // library properties:
 lib.properties = {
 	id: 'FBD0FB21FDD98F4A8CF07E47B492B107',
