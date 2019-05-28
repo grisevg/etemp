@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"edate_atlas_", frames: [[1282,894,288,288],[1160,1184,288,288],[1572,894,288,288],[0,898,288,288],[870,898,288,288],[290,898,288,288],[580,898,288,288],[0,0,1280,896],[1282,719,675,173],[1282,0,690,717]]}
+		{name:"edate_atlas_", frames: [[1673,906,288,288],[1383,906,288,288],[0,1073,288,288],[290,1073,288,288],[870,1196,288,288],[1093,906,288,288],[580,1166,288,288],[0,0,1280,896],[677,898,414,266],[1160,1196,414,152],[1282,719,703,185],[0,898,675,173],[1282,0,690,717]]}
 ];
 
 
@@ -67,34 +67,39 @@ lib.ssMetadata = [
 
 
 
-(lib.logo = function() {
+(lib.CachedTexturedBitmap_12 = function() {
 	this.initialize(ss["edate_atlas_"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.roadhog = function() {
+(lib.CachedTexturedBitmap_13 = function() {
 	this.initialize(ss["edate_atlas_"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
-// helper functions:
 
-function mc_symbol_clone() {
-	var clone = this._cloneProps(new this.constructor(this.mode, this.startPosition, this.loop));
-	clone.gotoAndStop(this.currentFrame);
-	clone.paused = this.paused;
-	clone.framerate = this.framerate;
-	return clone;
-}
 
-function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
-	var prototype = cjs.extend(symbol, cjs.MovieClip);
-	prototype.clone = mc_symbol_clone;
-	prototype.nominalBounds = nominalBounds;
-	prototype.frameBounds = frameBounds;
-	return prototype;
-	}
+
+(lib.ecard = function() {
+	this.initialize(ss["edate_atlas_"]);
+	this.gotoAndStop(10);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.logo = function() {
+	this.initialize(ss["edate_atlas_"]);
+	this.gotoAndStop(11);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.roadhog = function() {
+	this.initialize(ss["edate_atlas_"]);
+	this.gotoAndStop(12);
+}).prototype = p = new cjs.Sprite();
+
 
 
 (lib.soldier_Layer_1 = function(mode,startPosition,loop) {
@@ -127,10 +132,87 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 }).prototype = p = new cjs.MovieClip();
 
 
+(lib.Scene_1_BG = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// BG
+	this.instance = new lib.Bitmap1();
+	this.instance.parent = this;
+	this.instance.setTransform(1,0);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(2));
+
+}).prototype = p = new cjs.MovieClip();
+
+
+(lib.button = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// Layer_2
+	this.text = new cjs.Text("OPEN", "38px 'Ravie'", "#003366");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 53;
+	this.text.lineWidth = 234;
+	this.text.parent = this;
+	this.text.setTransform(116,-16.85);
+
+	this.instance = new lib.CachedTexturedBitmap_12();
+	this.instance.parent = this;
+	this.instance.setTransform(13,-84.95,0.5,0.5);
+
+	this.instance_1 = new lib.CachedTexturedBitmap_13();
+	this.instance_1.parent = this;
+	this.instance_1.setTransform(13,-28,0.5,0.5);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.text}]}).to({state:[{t:this.instance_1},{t:this.text}]},1).wait(2));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-3,-84.9,238,133);
+
+
+(lib.soldier = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// timeline functions:
+	this.frame_13 = function() {
+		this.___loopingOver___ = true;
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(13).call(this.frame_13).wait(1));
+
+	// Layer_1_obj_
+	this.Layer_1 = new lib.soldier_Layer_1();
+	this.Layer_1.name = "Layer_1";
+	this.Layer_1.parent = this;
+	this.Layer_1.setTransform(144,144,1,1,0,0,0,144,144);
+	this.Layer_1.depth = 0;
+	this.Layer_1.isAttachedToCamera = 0
+	this.Layer_1.isAttachedToMask = 0
+	this.Layer_1.layerDepth = 0
+	this.Layer_1.layerIndex = 0
+	this.Layer_1.maskLayerName = 0
+
+	this.timeline.addTween(cjs.Tween.get(this.Layer_1).wait(14));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,0,288,288);
+
+
 (lib.Scene_1_Logo_and_text = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// Logo_and_text
+	this.button_1 = new lib.button();
+	this.button_1.name = "button_1";
+	this.button_1.parent = this;
+	this.button_1.setTransform(486.05,317.2);
+	new cjs.ButtonHelper(this.button_1, 0, 1, 2);
+
+	this.instance = new lib.ecard();
+	this.instance.parent = this;
+	this.instance.setTransform(275,118);
+
 	this.text = new cjs.Text("at some point if/when you want and have some time to kill and want company :)", "12px 'Stencil'", "#003366");
 	this.text.textAlign = "center";
 	this.text.lineHeight = 16;
@@ -172,55 +254,13 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	this.sd_1.setTransform(540.9,279.05);
 	this.sd_1.shadow = new cjs.Shadow("rgba(51,0,255,1)",0,0,4);
 
-	this.instance = new lib.logo();
-	this.instance.parent = this;
-	this.instance.setTransform(293,18);
+	this.instance_1 = new lib.logo();
+	this.instance_1.parent = this;
+	this.instance_1.setTransform(293,18);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.sd_1},{t:this.text_3},{t:this.text_2},{t:this.text_1},{t:this.sd},{t:this.text}]}).wait(1));
-
-}).prototype = getMCSymbolPrototype(lib.Scene_1_Logo_and_text, null, null);
-
-
-(lib.Scene_1_BG = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// BG
-	this.instance = new lib.Bitmap1();
-	this.instance.parent = this;
-	this.instance.setTransform(1,0);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-}).prototype = getMCSymbolPrototype(lib.Scene_1_BG, null, null);
-
-
-(lib.soldier = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// timeline functions:
-	this.frame_13 = function() {
-		this.___loopingOver___ = true;
-	}
-
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(13).call(this.frame_13).wait(1));
-
-	// Layer_1_obj_
-	this.Layer_1 = new lib.soldier_Layer_1();
-	this.Layer_1.name = "Layer_1";
-	this.Layer_1.parent = this;
-	this.Layer_1.setTransform(144,144,1,1,0,0,0,144,144);
-	this.Layer_1.depth = 0;
-	this.Layer_1.isAttachedToCamera = 0
-	this.Layer_1.isAttachedToMask = 0
-	this.Layer_1.layerDepth = 0
-	this.Layer_1.layerIndex = 0
-	this.Layer_1.maskLayerName = 0
-
-	this.timeline.addTween(cjs.Tween.get(this.Layer_1).wait(14));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.button_1}]}).to({state:[{t:this.instance_1},{t:this.sd_1},{t:this.text_3},{t:this.text_2},{t:this.text_1},{t:this.sd},{t:this.text}]},1).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,0,288,288);
 
 
 (lib.Scene_1_anims = function(mode,startPosition,loop) {
@@ -235,9 +275,9 @@ p.nominalBounds = new cjs.Rectangle(0,0,288,288);
 	this.instance_1.parent = this;
 	this.instance_1.setTransform(185.95,551.3,1,1,0,0,0,144,144);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.instance_1},{t:this.instance}]},1).wait(1));
 
-}).prototype = getMCSymbolPrototype(lib.Scene_1_anims, null, null);
+}).prototype = p = new cjs.MovieClip();
 
 
 // stage content:
@@ -275,18 +315,36 @@ p.nominalBounds = new cjs.Rectangle(0,0,288,288);
 
 	// timeline functions:
 	this.frame_0 = function() {
+		this.button_1 = this.Logo_and_text.button_1;
+		/* Click to Go to Web Page
+		Clicking on the specified symbol instance loads the URL in a new browser window.
+		
+		Instructions:
+		1. Replace http://www.adobe.com with the desired URL address.
+		   Keep the quotation marks ("").
+		*/
+		
+		this.button_1.addEventListener("click", fl_ClickToGoToWebPage);
+		var that = this;
+		function fl_ClickToGoToWebPage() {
+			that.gotoAndStop(1);
+		}
+		this.stop();
+	}
+	this.frame_1 = function() {
+		this.button_1 = undefined;this.sd = this.Logo_and_text.sd;
 		this.sd = this.Logo_and_text.sd;
-		this.sd = this.Logo_and_text.sd;
+		this.___loopingOver___ = true;
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1).call(this.frame_1).wait(1));
 
 	// Logo_and_text_obj_
 	this.Logo_and_text = new lib.Scene_1_Logo_and_text();
 	this.Logo_and_text.name = "Logo_and_text";
 	this.Logo_and_text.parent = this;
-	this.Logo_and_text.setTransform(630.5,356.5,1,1,0,0,0,630.5,356.5);
+	this.Logo_and_text.setTransform(626.5,241.6,1,1,0,0,0,626.5,241.6);
 	this.Logo_and_text.depth = 0;
 	this.Logo_and_text.isAttachedToCamera = 0
 	this.Logo_and_text.isAttachedToMask = 0
@@ -294,13 +352,12 @@ p.nominalBounds = new cjs.Rectangle(0,0,288,288);
 	this.Logo_and_text.layerIndex = 0
 	this.Logo_and_text.maskLayerName = 0
 
-	this.timeline.addTween(cjs.Tween.get(this.Logo_and_text).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.Logo_and_text).wait(2));
 
 	// anims_obj_
 	this.anims = new lib.Scene_1_anims();
 	this.anims.name = "anims";
 	this.anims.parent = this;
-	this.anims.setTransform(680,524,1,1,0,0,0,680,524);
 	this.anims.depth = 0;
 	this.anims.isAttachedToCamera = 0
 	this.anims.isAttachedToMask = 0
@@ -308,7 +365,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,288,288);
 	this.anims.layerIndex = 1
 	this.anims.maskLayerName = 0
 
-	this.timeline.addTween(cjs.Tween.get(this.anims).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.anims).wait(2));
 
 	// BG_obj_
 	this.BG = new lib.Scene_1_BG();
@@ -322,7 +379,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,288,288);
 	this.BG.layerIndex = 2
 	this.BG.maskLayerName = 0
 
-	this.timeline.addTween(cjs.Tween.get(this.BG).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.BG).wait(2));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(641,356,677,540);
